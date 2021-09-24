@@ -10,12 +10,12 @@ import { createFirestoreInstance } from 'redux-firestore';
 import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
 import firebase from './config/firebaseConfig';
 
-// const initialState = {};
-const store = createStore(rootReducer
+const rrfConfig = { userProfile: 'users', useFirestoreForProfile: true }
+
+const initialState = {};
+const store = createStore(rootReducer, initialState
   , applyMiddleware(thunk.withExtraArgument({getFirebase}))
 );
-
-const rrfConfig = { userProfile: 'users' }
 
 const rrfProps = {
   firebase,
