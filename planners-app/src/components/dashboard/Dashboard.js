@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { useFirestoreConnect } from "react-redux-firebase";
 
 const Dashboard = () => {
-  // const { project: data } = useSelector((state) => state);
 
   useFirestoreConnect(
     { collection: 'projects' }
