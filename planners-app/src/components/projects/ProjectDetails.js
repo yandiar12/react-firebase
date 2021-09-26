@@ -6,11 +6,12 @@ const ProjectDetails = () => {
   const { id } = useParams();
 
   useFirestoreConnect({ collection: 'projects' });
-  const projects = useSelector((state) => state.firestore.data.projects)
-  const project = projects ? projects[id] : null
+  const projects = useSelector((state) => state.firestore.data.projects);
+  const project = projects ? projects[id] : null;
 
   return (
     <div className="container section project-details">
+      { project === null && <div className="container center">Loading...</div> }
       { project && <div className="card z-depth-0">
         <div className="card-content">
           <span className="card-title">{ project.title }</span>
