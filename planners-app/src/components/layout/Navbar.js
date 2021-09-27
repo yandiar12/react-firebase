@@ -3,19 +3,15 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SignInLinks from './SignedInLinks';
 import SignOutLinks from './SignedOutLinks';
-// import { useFirebaseConnect } from "react-redux-firebase";
 
 const Navbar = () => {
-
-  const isLoggedIn = useSelector((state) => state.firebase.auth);
-  console.log(isLoggedIn);
-
+  const auth = useSelector((state) => state.firebase.auth);
+  const links = auth.uid ? <SignInLinks /> : <SignOutLinks />
   return (
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
         <Link to="/" className="brand-logo left">Planners App</Link>
-        <SignInLinks />
-        <SignOutLinks />
+        { links }
       </div>
     </nav>
   );

@@ -5,7 +5,7 @@ import { useFirestoreConnect } from "react-redux-firebase";
 const ProjectDetails = () => {
   const { id } = useParams();
 
-  useFirestoreConnect({ collection: 'projects' });
+  useFirestoreConnect({ collection: 'projects', doc: id });
   const projects = useSelector((state) => state.firestore.data.projects);
   const project = projects ? projects[id] : null;
 

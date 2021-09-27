@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signIn } from '../../store/actions/authActions';
+import { Redirect } from 'react-router-dom';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -9,6 +10,9 @@ const SignIn = () => {
   const dispatch = useDispatch();
 
   const authError = useSelector(state => state.auth.authError);
+  const auth = useSelector((state) => state.firebase.auth)
+
+  if (auth.uid) return <Redirect to="/" />
 
   const handleChange = (e) => {
     switch (e.target.id) {
@@ -20,6 +24,10 @@ const SignIn = () => {
           break;
       default:
         break;
+    }
+
+    if (e.key === 'Enter') {
+      handleSubmit();
     }
   }
 
@@ -34,6 +42,7 @@ const SignIn = () => {
     dispatch(signIn(credentials));
   }
 
+  
   return (
     <div className="container">
       <form onSubmit={handleSubmit} className="white">

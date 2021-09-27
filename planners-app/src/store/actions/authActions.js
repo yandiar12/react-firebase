@@ -1,3 +1,5 @@
+import { getFirebase } from 'react-redux-firebase'
+
 export const signIn = (credentials) => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase()
@@ -22,5 +24,12 @@ export const signOut = () => {
     }).catch((err) => {
       dispatch({ type: 'LOGOUT_ERROR', payload: err })
     })
+  }
+}
+
+export const signUp = (newUser) => {
+  return (dispatch, getState, { getFirebase }) => {
+    const firestore = getFirebase().firestore();
+
   }
 }
