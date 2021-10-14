@@ -11,6 +11,7 @@ const SignUp = () => {
 
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.firebase.auth)
+  const authError = useSelector(state => state.auth.authError);
 
   if (auth.uid) return <Redirect to="/" />
 
@@ -69,6 +70,9 @@ const SignUp = () => {
         </div>
         <div className="input-field">
           <button className="btn red lighten-1 z-depth-0">Sign Up</button>
+          <div className="red-text center">
+            { authError ? <p> { authError } </p> : null }
+          </div>
         </div>
       </form>
     </div>

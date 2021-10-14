@@ -10,8 +10,8 @@ const SignIn = () => {
   const dispatch = useDispatch();
 
   const authError = useSelector(state => state.auth.authError);
-  const auth = useSelector((state) => state.firebase.auth)
-
+  const auth = useSelector((state) => state.firebase.auth);
+  
   if (auth.uid) return <Redirect to="/" />
 
   const handleChange = (e) => {

@@ -43,7 +43,7 @@ export const signUp = (newUser) => {
     }).then(() => {
       dispatch({ type: 'SIGNUP_SUCCESS' })
     }).catch(err => {
-      dispatch({ type: 'SIGNUP_ERROR', payload: err })
+      dispatch({ type: 'SIGNUP_ERROR', payload: err.message })
     })
   }
 }
